@@ -31,24 +31,23 @@ const getAllUsers = (req, res) => {
 // @route POST /users
 // @access public
 const postUser = (req, res) => {
-    const data = req?.body;
+  const data = req?.body;
 
-    if (!data || !data?.name || !data.age) {
-      return res.status(400).json({ message: "bad request" });
-    }
+  if (!data || !data?.name || !data.age) {
+    return res.status(400).json({ message: "bad request" });
+  }
 
-    let temp = {
-      id: users.length + 1,
-      qid: uniqid(),
-      name: data?.name,
-      age: data?.age,
-    };
-
-    users.push(temp);
-
-    return res.status(201).json({ users, message: "user created" });
+  let temp = {
+    id: users.length + 1,
+    qid: uniqid(),
+    name: data?.name,
+    age: data?.age,
   };
 
+  users.push(temp);
+
+  return res.status(201).json({ users, message: "user created" });
+};
 
 // @desc Get a user
 // @route GET /users/:id
